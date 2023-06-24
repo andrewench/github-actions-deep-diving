@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "preinstall": "husky install",
+    "husky": "husky install",
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint app --ext ts,tsx -c .eslintrc.cjs",
@@ -40,7 +40,6 @@
   },
   "lint-staged": {
     "*{.ts,tsx}": [
-      "yarn prettify",
       "yarn lint"
     ]
   }
