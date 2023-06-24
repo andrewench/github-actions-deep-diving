@@ -1,7 +1,7 @@
 name: install deps
 on: [push]
 jobs:
-  install-deps:
+  prepare:
     name: Installing dependencies
     runs-on: ubuntu-latest
     steps:
@@ -12,22 +12,30 @@ jobs:
         with:
           node-version: 16.x
 
-      - name: Install dependencies
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: install
+  install:
+    name: Install dependencies
+    steps:
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: install
 
-      - name: Prettier code
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: prettify
+  prettier:
+    name: Prettier
+    steps:
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: prettify
 
-      - name: Linting code
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: lint
+  linting:
+    name: ESLint
+    steps:
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: lint
 
-      - name: Build production bundle
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: build
+  build:
+    name: Build
+    steps:
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: build
