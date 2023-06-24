@@ -1,13 +1,11 @@
 {
   "compilerOptions": {
-    "baseUrl": "app",
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
     "moduleResolution": "node",
-    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -16,11 +14,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "paths": {
-      "@/components/screens": ["components/screens"],
-      "@/providers": ["providers"],
-    }
   },
   "include": ["app"],
+  "extends": "./tsconfig.paths.json",
   "references": [{ "path": "./tsconfig.node.json" }]
 }

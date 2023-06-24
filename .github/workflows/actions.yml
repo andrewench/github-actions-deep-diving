@@ -1,8 +1,8 @@
 name: using-github-actions
-run-name: ${{ github.actor }} is learning Github Actions
+run-name: ${{ github.actor }} is running linting
 on: [push]
 jobs:
-  show-log:
+  linter:
     runs-on: ubuntu-latest
     steps:
-      - run: echo Hello world!
+      - run: yarn lint

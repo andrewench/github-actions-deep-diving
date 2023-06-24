@@ -1,0 +1,19 @@
+{
+  "printWidth": 80,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": false,
+  "singleQuote": true,
+  "jsxSingleQuote": false,
+  "bracketSameLine": true,
+  "arrowParens": "avoid",
+  "importOrder": [
+    "(.*react.*)",
+    "<THIRD_PARTY_MODULES>",
+    "^@/components/screens",
+    "^@/providers",
+    "^@/"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
