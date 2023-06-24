@@ -1,0 +1,33 @@
+name: install deps
+on: [push]
+jobs:
+  prepare:
+    name: Installing dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Install dependencies
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install
+
+      - name: Prettier
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: prettify
+
+      - name: ESLint
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: lint
+
+      - name: Build
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: build
