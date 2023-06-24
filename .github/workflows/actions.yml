@@ -1,8 +1,0 @@
-name: using-github-actions
-run-name: ${{ github.actor }} is running linting
-on: [push]
-jobs:
-  linter:
-    runs-on: ubuntu-latest
-    steps:
-      - run: yarn lint
