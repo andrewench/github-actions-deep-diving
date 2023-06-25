@@ -49,7 +49,6 @@ jobs:
         with:
           cmd: install
 
-      - uses: actions/checkout@v3
       - uses: borales/actions-yarn@v4
         with:
           cmd: lint
