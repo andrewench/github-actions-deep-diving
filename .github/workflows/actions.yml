@@ -18,17 +18,26 @@ jobs:
         with:
           cmd: install
 
-      - name: Prettier
-        uses: borales/actions-yarn@v4
+  prettier:
+    name: Prettier
+    runs-on: ubuntu-latest
+    steps:
+      - uses: borales/actions-yarn@v4
         with:
           cmd: prettify
 
-      - name: ESLint
-        uses: borales/actions-yarn@v4
+  lint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: borales/actions-yarn@v4
         with:
           cmd: lint
 
-      - name: Build
-        uses: borales/actions-yarn@v4
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: borales/actions-yarn@v4
         with:
           cmd: build
