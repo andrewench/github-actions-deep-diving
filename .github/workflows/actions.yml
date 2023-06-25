@@ -7,10 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get repository code
+        id: repository-code
         uses: actions/checkout@v3
 
+      - name: Get yarn cache director path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
       - name: Cache installing deps
-        id: yarn-cache
         uses: actions/cache@v3
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -34,8 +38,11 @@ jobs:
       - name: Get repository code
         uses: actions/checkout@v3
 
+      - name: Get yarn cache director path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
       - name: Cache installing deps
-        id: yarn-cache
         uses: actions/cache@v3
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -58,8 +65,11 @@ jobs:
       - name: Get repository code
         uses: actions/checkout@v3
 
+      - name: Get yarn cache director path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
       - name: Cache installing deps
-        id: yarn-cache
         uses: actions/cache@v3
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -82,8 +92,11 @@ jobs:
       - name: Get repository code
         uses: actions/checkout@v3
 
+      - name: Get yarn cache director path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
       - name: Cache installing deps
-        id: yarn-cache
         uses: actions/cache@v3
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
