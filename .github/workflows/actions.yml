@@ -6,7 +6,8 @@ jobs:
     name: Installing dependencies
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Get repository code
+        uses: actions/checkout@v3
 
       - name: Set Node.js 16.x
         uses: actions/setup-node@v3
@@ -23,12 +24,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: prepare
     steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+
       - name: Install dependencies
         uses: borales/actions-yarn@v4
         with:
           cmd: install
 
-      - uses: actions/checkout@v3
       - uses: borales/actions-yarn@v4
         with:
           cmd: prettify
@@ -38,6 +41,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: [prepare, prettier]
     steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+
       - name: Install dependencies
         uses: borales/actions-yarn@v4
         with:
@@ -53,12 +59,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: [prepare, prettier, lint]
     steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+
       - name: Install dependencies
         uses: borales/actions-yarn@v4
         with:
           cmd: install
 
-      - uses: actions/checkout@v3
       - uses: borales/actions-yarn@v4
         with:
           cmd: build
