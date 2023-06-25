@@ -120,3 +120,18 @@ jobs:
       - uses: borales/actions-yarn@v4
         with:
           cmd: build
+
+      - name: UploadArtifacts
+        uses: actions/upload-artifact@v3
+        with:
+          path: build
+          name: build-files
+
+  artifacts:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get build
+        uses: actions/download-artifact@v3
+        with:
+          name: build-files
