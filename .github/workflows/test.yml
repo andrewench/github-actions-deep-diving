@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Get repository code
         uses: actions/checkout@v3
-    
+
       - name: Set Node.js 16.x
         uses: actions/setup-node@v3
         with:
@@ -17,3 +17,13 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: install
+
+  prettier:
+    name: Prettier
+    runs-on: ubuntu-latest
+    needs: prepare
+    steps:
+      - name: Prettify
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: prettify
