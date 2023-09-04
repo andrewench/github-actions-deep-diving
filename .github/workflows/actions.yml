@@ -1,18 +1,23 @@
-name: Workflow
-run-name: ${{ github.actor }} is running workflow
+name: github-actions-deep-diving-workflow
+run-name: ${{ github.actor }} started workflow
 on: [push]
 jobs:
   prepare:
-    name: Installing dependencies
+    name: Install deps
     runs-on: ubuntu-latest
     steps:
-      - name: Get repository code
-        id: repository-code
-        uses: actions/checkout@v3
+      - name: Set Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
 
       - name: Get yarn cache directory path
         id: cache-dir
         run: echo "dir=$(config get cache-folder)"
+
+      - name: Get repository code
+        id: repository-code
+        uses: actions/checkout@v3
 
       - name: Cache installing deps
         uses: actions/cache@v3
@@ -20,12 +25,7 @@ jobs:
           path: ${{ steps.cache-dir.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Set Node.js 16.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-
-      - name: Install dependencies
+      - name: Install deps
         uses: borales/actions-yarn@v4
         with:
           cmd: install
@@ -48,7 +48,7 @@ jobs:
           path: ${{ steps.cache-dir.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Install dependencies
+      - name: Install deps
         uses: borales/actions-yarn@v4
         with:
           cmd: install
@@ -75,7 +75,7 @@ jobs:
           path: ${{ steps.cache-dir.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Install dependencies
+      - name: Install deps
         uses: borales/actions-yarn@v4
         with:
           cmd: install
@@ -112,7 +112,7 @@ jobs:
           path: ${{ steps.cache-dir.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Install dependencies
+      - name: Install deps
         uses: borales/actions-yarn@v4
         with:
           cmd: install
