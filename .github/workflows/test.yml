@@ -18,13 +18,6 @@ jobs:
         with:
           cmd: install
 
-      - name: Cache deps
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/yarn
-          key: ${{ runner.os }}-yarn-${{ github.run_id }}}
-          restore-keys: ${{ runner.os }}-yarn
-
   prettier:
     name: Prettier
     runs-on: ubuntu-latest
@@ -33,12 +26,10 @@ jobs:
       - name: Get repository code
         uses: actions/checkout@v3
 
-      - name: Get cached deps
-        uses: actions/cache@v3
+      - name: Install deps
+        uses: borales/actions-yarn@v4
         with:
-          path: ~/.cache/yarn
-          key: ${{ runner.os }}-yarn-${{ github.run_id }}}
-          restore-keys: ${{ runner.os }}-yarn
+          cmd: install
 
       - name: Prettify
         uses: borales/actions-yarn@v4
