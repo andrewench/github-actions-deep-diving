@@ -23,6 +23,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: prepare
     steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+
       - name: Prettify
         uses: borales/actions-yarn@v4
         with:
